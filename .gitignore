@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Environment variables
+.env
+.env.*
+
+# Large/raw datasets
+data/twcs.csv
+data/apple_conversations.jsonl
+data/apple_support_interactions.jsonl
+data/brand_candidates.csv
+data/brand_interactions.csv
+
+# Generated outputs
+*.log
+*.tmp
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

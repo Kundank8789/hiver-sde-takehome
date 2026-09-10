@@ -1,0 +1,32 @@
+{
+  "IOS_UPDATE": {
+    "description": "Problems installing, updating, or operating after an iOS/macOS software update."
+  },
+  "BATTERY_POWER": {
+    "description": "Battery drain, charging, power, or battery-life problems."
+  },
+  "PERFORMANCE_STABILITY": {
+    "description": "Slowness, freezing, crashing, restarting, hanging, or general device instability."
+  },
+  "CONNECTIVITY": {
+    "description": "Wi-Fi, Bluetooth, cellular, network, or connection problems."
+  },
+  "APPS_MEDIA": {
+    "description": "Problems involving Apple apps, media, messaging, music, photos, video, or other software services."
+  },
+  "DEVICE_HARDWARE": {
+    "description": "Physical device faults, hardware failures, damaged components, or hardware repair questions."
+  },
+  "FEATURE_HOW_TO": {
+    "description": "Questions about how to use, configure, or understand an Apple feature."
+  },
+  "ACCOUNT_SECURITY": {
+    "description": "Apple ID, password, authentication, account access, or security-related problems."
+  },
+  "PURCHASE_REPAIR_WARRANTY": {
+    "description": "Purchases, orders, reservations, accessories, repairs, service appointments, or warranty questions."
+  },
+  "OTHER_UNCLEAR": {
+    "description": "Insufficient or ambiguous information to assign a reliable support intent."
+  }
+}
