@@ -43,3 +43,23 @@ Individual products and individual bugs would create an overly fragmented taxono
 
 **Why include OTHER_UNCLEAR:**
 Some customer messages are too vague or contain insufficient information. The agent should be able to explicitly acknowledge uncertainty instead of forcing an incorrect intent.
+
+## Decision 5 — Freeze the golden evaluation set
+
+**Decision:** Freeze 200 human-labelled examples as `evaluation/golden_set.csv`.
+
+**Why:**
+The set was independently labelled after blind candidate sampling and passed structural validation with no missing annotations, invalid labels, or duplicate interaction IDs.
+
+**Composition:**
+- 200 examples
+- 10 intent classes
+- 20 examples per intent
+- 120 marked for escalation
+- 80 marked for non-escalation
+
+**Evaluation constraint:**
+The frozen set will not be used for model training or prompt-example retrieval during evaluation.
+
+**Caveat:**
+The class distribution was intentionally constructed for coverage and is therefore not representative of production traffic frequency.
