@@ -63,3 +63,19 @@ The frozen set will not be used for model training or prompt-example retrieval d
 
 **Caveat:**
 The class distribution was intentionally constructed for coverage and is therefore not representative of production traffic frequency.
+
+## Decision 9 — Treat lexical retrieval as a baseline, not the final retriever
+
+**Decision:** Do not rely on TF-IDF lexical retrieval alone for the final support agent.
+
+**Evidence:**
+Recall@5 was only 0.145 for lexical retrieval and 0.150 after
+intent-aware reranking.
+
+**Conclusion:**
+The retrieval layer provides useful historical examples but is not reliable
+enough to determine relevance by lexical similarity alone.
+
+**Next step:**
+Use semantic intent classification and retrieval-assisted response
+generation, while retaining lexical retrieval as a transparent baseline.

@@ -27,3 +27,33 @@ data/brand_interactions.csv
 # OS
 .DS_Store
 Thumbs.db
+# Large datasets / generated data
+data/twcs.csv
+data/apple_conversations.jsonl
+data/apple_support_interactions.jsonl
+data/weak_training.jsonl
+data/retrieval_index/
+data/retrieval_index.json
+
+# Golden-set working exports
+evaluation/golden_zoho_export.csv
+evaluation/blind_golden_zoho_export.csv
+evaluation/golden_set_pilot.csv
+evaluation/golden_annotation_sheet.csv
+evaluation/golden_candidates.jsonl
+evaluation/blind_golden_candidates.jsonl
+evaluation/blind_golden_annotation.csv
+
+# Secrets
+.env
+.env.*
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/

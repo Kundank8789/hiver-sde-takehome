@@ -3,60 +3,34 @@ from __future__ import annotations
 from retriever import HistoricalRetriever
 
 
-def print_results(
-    query: str,
-    retriever: HistoricalRetriever,
-    top_k: int = 3,
-) -> None:
-
-    print()
-    print("=" * 80)
-    print(f"QUERY:\n{query}")
-    print("=" * 80)
-
-    results = retriever.retrieve(
-        query=query,
-        top_k=top_k,
-    )
-
-    if not results:
-        print("\nNo relevant historical cases found.")
-        return
-
-    for rank, result in enumerate(
-        results,
-        start=1,
-    ):
-
-        score = result["retrieval_score"]
-
-        print()
-        print(
-            f"RESULT {rank} "
-            f"(cosine={score:.4f})"
-        )
-
-        print(
-            "\nCustomer:"
-        )
-
-        print(
-            result["customer_message"]
-        )
-
-        print(
-            "\nHistorical AppleSupport:"
-        )
-
-        print(
-            result["agent_response"]
-        )
+TEST_CASES = [
+    (
+        "My iPhone battery is draining very quickly",
+        "BATTERY_POWER",
+    ),
+    (
+        "My iPhone cannot install the latest iOS update",
+        "IOS_UPDATE",
+    ),
+    (
+        "Bluetooth won't connect to my car",
+        "CONNECTIVITY",
+    ),
+    (
+        "My Apple ID password is locked",
+        "ACCOUNT_SECURITY",
+    ),
+    (
+        "How do I use the notification feature on my iPhone?",
+        "FEATURE_HOW_TO",
+    ),
+]
 
 
 def main() -> None:
 
     print("=" * 80)
-    print("HIVER — RETRIEVER SANITY CHECK")
+    print("HIVER — INTENT-AWARE RETRIEVAL SANITY CHECK")
     print("=" * 80)
 
     retriever = HistoricalRetriever()
@@ -66,25 +40,52 @@ def main() -> None:
         f"{len(retriever.documents):,}"
     )
 
-    queries = [
-        "My iPhone battery is draining very quickly",
+    for query, intent in TEST_CASES:
 
-        "My iPhone cannot install the latest iOS update",
+        print()
+        print("=" * 80)
+        print(f"QUERY: {query}")
+        print(f"INTENT: {intent}")
+        print("=" * 80)
 
-        "Bluetooth won't connect to my car",
-
-        "My Apple ID password is locked",
-
-        "How do I use the notification feature on my iPhone?",
-    ]
-
-    for query in queries:
-
-        print_results(
+        results = retriever.retrieve(
             query=query,
-            retriever=retriever,
+            intent=intent,
+            candidate_k=20,
             top_k=3,
         )
+
+        if not results:
+            print("\nNo results.")
+            continue
+
+        for rank, result in enumerate(
+            results,
+            start=1,
+        ):
+
+            print()
+            print(
+                f"RESULT {rank} "
+                f"(lexical={result['retrieval_score']:.4f}, "
+                f"rerank={result['rerank_score']:.4f})"
+            )
+
+            print(
+                "\nCustomer:"
+            )
+
+            print(
+                result["customer_message"]
+            )
+
+            print(
+                "\nAppleSupport:"
+            )
+
+            print(
+                result["agent_response"]
+            )
 
 
 if __name__ == "__main__":

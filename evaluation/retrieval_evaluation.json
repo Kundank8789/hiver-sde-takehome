@@ -1,0 +1,14 @@
+{
+  "lexical": {
+    "evaluated_examples": 200,
+    "recall_at_1": 0.08,
+    "recall_at_3": 0.135,
+    "recall_at_5": 0.145
+  },
+  "intent_aware": {
+    "evaluated_examples": 200,
+    "recall_at_1": 0.09,
+    "recall_at_3": 0.135,
+    "recall_at_5": 0.15
+  }
+}

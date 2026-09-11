@@ -20,6 +20,94 @@ DEFAULT_INDEX_DIR = (
 )
 
 
+INTENT_TERMS = {
+    "IOS_UPDATE": [
+        "ios",
+        "update",
+        "upgrade",
+        "install",
+        "software",
+    ],
+    "BATTERY_POWER": [
+        "battery",
+        "charge",
+        "charging",
+        "charger",
+        "drain",
+        "power",
+    ],
+    "PERFORMANCE_STABILITY": [
+        "slow",
+        "lag",
+        "freeze",
+        "crash",
+        "restart",
+        "stuck",
+        "unresponsive",
+    ],
+    "CONNECTIVITY": [
+        "wifi",
+        "bluetooth",
+        "cellular",
+        "network",
+        "connect",
+        "connection",
+        "hotspot",
+    ],
+    "APPS_MEDIA": [
+        "music",
+        "itunes",
+        "imovie",
+        "facetime",
+        "messages",
+        "photos",
+        "youtube",
+        "app",
+    ],
+    "DEVICE_HARDWARE": [
+        "screen",
+        "display",
+        "speaker",
+        "camera",
+        "keyboard",
+        "broken",
+        "cracked",
+        "hardware",
+    ],
+    "FEATURE_HOW_TO": [
+        "how",
+        "use",
+        "enable",
+        "disable",
+        "where",
+        "feature",
+        "setting",
+    ],
+    "ACCOUNT_SECURITY": [
+        "apple id",
+        "password",
+        "account",
+        "verification",
+        "verify",
+        "locked",
+        "sign in",
+        "login",
+    ],
+    "PURCHASE_REPAIR_WARRANTY": [
+        "order",
+        "purchase",
+        "buy",
+        "refund",
+        "warranty",
+        "repair",
+        "appointment",
+        "reservation",
+        "replacement",
+    ],
+    "OTHER_UNCLEAR": [],
+}
+
+
 class HistoricalRetriever:
     """
     Leakage-safe historical support retriever.
@@ -199,51 +287,50 @@ class HistoricalRetriever:
 
         return text.strip()
 
+    @staticmethod
+    def tokenize(text: str) -> list[str]:
+        return re.findall(
+            r"[a-z0-9]+",
+            text.lower(),
+        )
+
     def retrieve(
         self,
         query: str,
         top_k: int = 5,
+        candidate_k: int = 20,
         min_score: float = 0.05,
+        intent: str | None = None,
     ) -> list[dict[str, Any]]:
 
-        if not isinstance(
-            query,
-            str,
-        ):
-            raise TypeError(
-                "query must be a string."
-            )
+        if not isinstance(query, str):
+            raise TypeError("query must be a string.")
+
+        if not query.strip():
+            return []
 
         if top_k <= 0:
+            raise ValueError("top_k must be greater than zero.")
+
+        if candidate_k < top_k:
             raise ValueError(
-                "top_k must be greater than zero."
+                "candidate_k must be >= top_k."
             )
 
-        if not 0.0 <= min_score <= 1.0:
-            raise ValueError(
-                "min_score must be between 0 and 1."
-            )
-
-        normalized_query = self.normalize(
-            query
-        )
+        normalized_query = self.normalize(query)
 
         if not normalized_query:
             return []
 
-        query_vector = (
-            self.vectorizer.transform(
-                [normalized_query]
-            )
+        query_vector = self.vectorizer.transform(
+            [normalized_query]
         )
 
-        # Proper cosine similarity.
         scores = cosine_similarity(
             query_vector,
             self.matrix,
         ).ravel()
 
-        # Only keep positive/relevant matches.
         candidate_indices = np.flatnonzero(
             scores >= min_score
         )
@@ -251,45 +338,100 @@ class HistoricalRetriever:
         if candidate_indices.size == 0:
             return []
 
-        # Rank highest similarity first.
-        order = np.argsort(
+        lexical_order = np.argsort(
             scores[candidate_indices]
         )[::-1]
 
-        results = []
+        candidate_indices = candidate_indices[
+            lexical_order[:candidate_k]
+        ]
 
-        for position in order[:top_k]:
+        query_terms = set(
+            self.tokenize(normalized_query)
+        )
 
-            index = int(
-                candidate_indices[position]
+        intent_terms = set(
+            INTENT_TERMS.get(
+                intent,
+                [],
             )
+        )
 
-            score = float(
+        reranked = []
+
+        for index in candidate_indices:
+
+            lexical_score = float(
                 scores[index]
             )
 
-            # Defensive numerical guard.
-            score = max(
-                0.0,
-                min(
-                    1.0,
-                    score,
-                ),
+            document = self.documents[
+                int(index)
+            ]
+
+            document_text = self.normalize(
+                document["customer_message"]
             )
 
-            document = dict(
-                self.documents[index]
+            document_terms = set(
+                self.tokenize(document_text)
             )
 
-            document[
+            # Intent overlap.
+            intent_overlap = 0.0
+
+            if intent_terms:
+                matched_intent_terms = (
+                    query_terms
+                    & document_terms
+                    & intent_terms
+                )
+
+                intent_overlap = (
+                    len(matched_intent_terms)
+                    / max(
+                        len(intent_terms),
+                        1,
+                    )
+                )
+
+            # Query overlap.
+            query_overlap = 0.0
+
+            if query_terms:
+                query_overlap = (
+                    len(
+                        query_terms
+                        & document_terms
+                    )
+                    / len(query_terms)
+                )
+
+            # Combined score.
+            final_score = (
+                0.70 * lexical_score
+                + 0.20 * query_overlap
+                + 0.10 * intent_overlap
+            )
+
+            result = dict(document)
+
+            result[
                 "retrieval_score"
-            ] = score
+            ] = lexical_score
 
-            results.append(
-                document
-            )
+            result[
+                "rerank_score"
+            ] = final_score
 
-        return results
+            reranked.append(result)
+
+        reranked.sort(
+            key=lambda item: item["rerank_score"],
+            reverse=True,
+        )
+
+        return reranked[:top_k]
 
 
 def main() -> None:
@@ -305,6 +447,7 @@ def main() -> None:
     results = retriever.retrieve(
         "my iphone battery is draining very quickly",
         top_k=3,
+        intent="BATTERY_POWER",
     )
 
     print(
@@ -320,7 +463,8 @@ def main() -> None:
         print()
         print(
             f"{rank}. "
-            f"score={result['retrieval_score']:.4f}"
+            f"score={result['retrieval_score']:.4f} "
+            f"rerank={result['rerank_score']:.4f}"
         )
 
         print(

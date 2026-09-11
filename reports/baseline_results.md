@@ -50,3 +50,23 @@ The baseline failed to reliably identify:
 - ACCOUNT_SECURITY
 - DEVICE_HARDWARE
 - OTHER_UNCLEAR
+
+## Retrieval diagnostic
+
+| Retrieval system | Recall@1 | Recall@3 | Recall@5 |
+|---|---:|---:|---:|
+| TF-IDF lexical retrieval | 0.0800 | 0.1350 | 0.1450 |
+| Intent-aware reranking | 0.0900 | 0.1350 | 0.1500 |
+
+The intent-aware reranker produced only a modest improvement over lexical
+TF-IDF retrieval.
+
+These values are diagnostic rather than definitive retrieval-ground-truth
+metrics because historical retrieved interactions do not have human intent
+labels. Historical intents were inferred using high-precision weak
+supervision, while the golden query intent comes from the independently
+human-labelled evaluation set.
+
+The result suggests that lexical overlap alone is insufficient for robust
+support-case retrieval, motivating semantic intent classification and
+stronger retrieval/reranking in the main system.
