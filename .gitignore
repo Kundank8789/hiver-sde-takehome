@@ -87,3 +87,9 @@ __pycache__/
 venv/
 .env
 .env.*
+
+
+# Temporary benchmark QA
+evaluation/golden_set_audit.csv
+evaluation/golden_set_adjudication.csv
+evaluation/judge_human_sample.csv

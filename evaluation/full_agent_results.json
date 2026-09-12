@@ -1,0 +1,21 @@
+{
+  "model": "openai/gpt-oss-20b",
+  "golden_examples": 200,
+  "intent": {
+    "accuracy": 0.1,
+    "macro_f1": 0.0503272368656984,
+    "weighted_f1": 0.0503272368656984
+  },
+  "escalation": {
+    "accuracy": 0.545,
+    "precision": 0.5947712418300654,
+    "recall": 0.7583333333333333,
+    "f1": 0.6666666666666666
+  },
+  "operations": {
+    "average_latency_seconds": 10.162885478000753,
+    "median_latency_seconds": 6.076145300001372,
+    "runtime_errors": 3,
+    "grounded_reply_rate": 0.97
+  }
+}

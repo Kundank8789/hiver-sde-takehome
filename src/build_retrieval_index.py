@@ -5,17 +5,23 @@ import pickle
 import re
 from pathlib import Path
 
-import pandas as pd
-from scipy.sparse import save_npz
+import numpy as np
+from scipy.sparse import csr_matrix, save_npz
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
-INTERACTIONS_PATH = (
+INPUT_PATH = (
     PROJECT_ROOT
     / "data"
     / "apple_support_interactions.jsonl"
+)
+
+WEAK_PATH = (
+    PROJECT_ROOT
+    / "data"
+    / "weak_training.jsonl"
 )
 
 GOLDEN_PATH = (
@@ -24,44 +30,33 @@ GOLDEN_PATH = (
     / "golden_set.csv"
 )
 
-INDEX_DIR = (
+OUTPUT_DIR = (
     PROJECT_ROOT
     / "data"
     / "retrieval_index"
 )
 
-MATRIX_PATH = INDEX_DIR / "tfidf_matrix.npz"
-VECTORIZER_PATH = INDEX_DIR / "vectorizer.pkl"
-DOCUMENTS_PATH = INDEX_DIR / "documents.jsonl"
-METADATA_PATH = INDEX_DIR / "metadata.json"
-
-TOKEN_PATTERN = re.compile(
-    r"(?u)\b[a-zA-Z0-9][a-zA-Z0-9_'-]*\b"
-)
+MATRIX_PATH = OUTPUT_DIR / "tfidf_matrix.npz"
+VECTORIZER_PATH = OUTPUT_DIR / "vectorizer.pkl"
+DOCUMENTS_PATH = OUTPUT_DIR / "documents.jsonl"
+METADATA_PATH = OUTPUT_DIR / "metadata.json"
 
 
-def normalize_text(text: str) -> str:
-    """
-    Normalize noisy Twitter text while preserving
-    useful lexical information.
-    """
+def normalize(text: str) -> str:
     text = str(text).lower()
 
-    # Remove URLs.
     text = re.sub(
-        r"https?://\S+|www\.\S+",
+        r"https?://\S+",
         " ",
         text,
     )
 
-    # Remove Twitter mentions.
     text = re.sub(
         r"@\w+",
         " ",
         text,
     )
 
-    # Normalize whitespace.
     text = re.sub(
         r"\s+",
         " ",
@@ -71,189 +66,206 @@ def normalize_text(text: str) -> str:
     return text.strip()
 
 
-def main() -> None:
-
-    print("=" * 72)
-    print("HIVER — BUILD LEAKAGE-SAFE TF-IDF RETRIEVAL INDEX")
-    print("=" * 72)
-
-    if not INTERACTIONS_PATH.exists():
-        raise FileNotFoundError(
-            f"Interactions not found:\n"
-            f"{INTERACTIONS_PATH}"
-        )
-
-    if not GOLDEN_PATH.exists():
-        raise FileNotFoundError(
-            f"Golden set not found:\n"
-            f"{GOLDEN_PATH}"
-        )
-
-    # ------------------------------------------------------
-    # Load frozen evaluation IDs.
-    # ------------------------------------------------------
+def load_golden_ids() -> set[str]:
+    import pandas as pd
 
     golden = pd.read_csv(
         GOLDEN_PATH,
         usecols=["interaction_id"],
     )
 
-    golden_ids = {
+    return {
         str(value).strip()
         for value in golden["interaction_id"]
-        if pd.notna(value)
+        if str(value).strip()
+        and str(value).strip() != "nan"
     }
+
+
+def load_weak_intents() -> dict[str, str]:
+    """
+    Build:
+        interaction_id -> weakly assigned intent
+
+    Only examples present in weak_training.jsonl are included.
+    """
+
+    mapping: dict[str, str] = {}
+
+    with WEAK_PATH.open(
+        "r",
+        encoding="utf-8",
+    ) as file:
+
+        for line in file:
+
+            if not line.strip():
+                continue
+
+            item = json.loads(line)
+
+            interaction_id = str(
+                item.get(
+                    "interaction_id",
+                    "",
+                )
+            ).strip()
+
+            intent = str(
+                item.get(
+                    "intent",
+                    "",
+                )
+            ).strip()
+
+            if (
+                interaction_id
+                and intent
+            ):
+                mapping[
+                    interaction_id
+                ] = intent
+
+    return mapping
+
+
+def main() -> None:
+
+    print("=" * 72)
+    print("HIVER — BUILD LEAKAGE-SAFE TF-IDF RETRIEVAL INDEX")
+    print("=" * 72)
+
+    golden_ids = load_golden_ids()
+    weak_intents = load_weak_intents()
 
     print(
         f"\nGolden IDs excluded: "
         f"{len(golden_ids)}"
     )
 
-    # ------------------------------------------------------
-    # Stream interactions and remove leakage.
-    # ------------------------------------------------------
+    print(
+        f"Weak intent labels available: "
+        f"{len(weak_intents):,}"
+    )
 
     documents = []
-    seen_customer_messages = set()
+    seen_texts = set()
 
-    total = 0
+    raw = 0
     excluded_golden = 0
-    excluded_duplicate = 0
+    excluded_duplicates = 0
     excluded_empty = 0
+    labeled_documents = 0
 
-    with INTERACTIONS_PATH.open(
+    print(
+        "\nReading support interactions..."
+    )
+
+    with INPUT_PATH.open(
         "r",
         encoding="utf-8",
-    ) as source:
+    ) as file:
 
-        for line in source:
+        for line in file:
 
             if not line.strip():
                 continue
 
-            total += 1
+            raw += 1
 
             item = json.loads(line)
 
             interaction_id = str(
-                item["interaction_id"]
+                item.get(
+                    "interaction_id",
+                    "",
+                )
             ).strip()
 
             if interaction_id in golden_ids:
                 excluded_golden += 1
                 continue
 
-            customer_message = normalize_text(
-                item["customer_message"]
+            customer_message = str(
+                item.get(
+                    "customer_message",
+                    "",
+                )
+            ).strip()
+
+            agent_response = str(
+                item.get(
+                    "agent_response",
+                    "",
+                )
+            ).strip()
+
+            normalized = normalize(
+                customer_message
             )
 
-            if len(customer_message) < 5:
+            if not normalized:
                 excluded_empty += 1
                 continue
 
-            # Deduplicate exact customer messages.
-            message_key = customer_message
-
-            if message_key in seen_customer_messages:
-                excluded_duplicate += 1
+            # Remove duplicate customer messages.
+            if normalized in seen_texts:
+                excluded_duplicates += 1
                 continue
 
-            seen_customer_messages.add(
-                message_key
+            seen_texts.add(normalized)
+
+            weak_intent = weak_intents.get(
+                interaction_id
             )
+
+            if weak_intent:
+                labeled_documents += 1
 
             documents.append(
                 {
                     "interaction_id": interaction_id,
-                    "customer_tweet_id": str(
-                        item["customer_tweet_id"]
-                    ),
-                    "customer_message": item[
-                        "customer_message"
-                    ],
-                    "normalized_text": customer_message,
-                    "context": item.get(
-                        "context",
-                        [],
-                    ),
-                    "agent_response": item[
-                        "agent_response"
-                    ],
+                    "customer_message": customer_message,
+                    "agent_response": agent_response,
+                    "intent": weak_intent,
                 }
             )
 
     if not documents:
         raise RuntimeError(
-            "No retrieval documents remain."
+            "No retrieval documents were created."
         )
 
-    print(
-        f"\nRaw interactions: "
-        f"{total:,}"
-    )
-
-    print(
-        f"Excluded golden examples: "
-        f"{excluded_golden:,}"
-    )
-
-    print(
-        f"Excluded duplicates: "
-        f"{excluded_duplicate:,}"
-    )
-
-    print(
-        f"Excluded empty/noisy messages: "
-        f"{excluded_empty:,}"
-    )
-
-    print(
-        f"Final retrieval documents: "
-        f"{len(documents):,}"
-    )
-
-    # ------------------------------------------------------
-    # Build sparse TF-IDF matrix.
-    # ------------------------------------------------------
-
     texts = [
-        document["normalized_text"]
+        normalize(
+            document[
+                "customer_message"
+            ]
+        )
         for document in documents
     ]
 
-    vectorizer = TfidfVectorizer(
-        token_pattern=TOKEN_PATTERN.pattern,
-        ngram_range=(1, 2),
-        min_df=2,
-        max_df=0.98,
-        sublinear_tf=True,
-        max_features=150_000,
-        norm="l2",
+    print(
+        "\nWriting retrieval index..."
     )
 
-    print(
-        "\nFitting TF-IDF vectorizer..."
+    vectorizer = TfidfVectorizer(
+        lowercase=False,
+        strip_accents="unicode",
+        sublinear_tf=True,
+        min_df=2,
+        max_df=0.98,
+        ngram_range=(1, 2),
+        max_features=150_000,
     )
 
     matrix = vectorizer.fit_transform(
         texts
-    )
+    ).tocsr()
 
-    print(
-        f"Matrix shape: {matrix.shape}"
-    )
-
-    # ------------------------------------------------------
-    # Persist index.
-    # ------------------------------------------------------
-
-    INDEX_DIR.mkdir(
+    OUTPUT_DIR.mkdir(
         parents=True,
         exist_ok=True,
-    )
-
-    print(
-        "\nSaving retrieval index..."
     )
 
     save_npz(
@@ -287,15 +299,19 @@ def main() -> None:
             )
 
     metadata = {
-        "version": 2,
+        "version": 3,
         "brand": "AppleSupport",
+        "raw_interactions": raw,
         "document_count": len(documents),
+        "labeled_documents": labeled_documents,
+        "excluded_golden": excluded_golden,
+        "excluded_duplicates": excluded_duplicates,
+        "excluded_empty": excluded_empty,
         "vocabulary_size": len(
             vectorizer.vocabulary_
         ),
         "golden_set_excluded": True,
-        "golden_set_size": len(golden_ids),
-        "duplicate_customer_messages_removed": True,
+        "weak_intents_attached": True,
     }
 
     with METADATA_PATH.open(
@@ -315,8 +331,32 @@ def main() -> None:
     print("=" * 72)
 
     print(
-        f"Documents: "
+        f"Raw interactions: {raw:,}"
+    )
+
+    print(
+        f"Excluded golden examples: "
+        f"{excluded_golden:,}"
+    )
+
+    print(
+        f"Excluded duplicates: "
+        f"{excluded_duplicates:,}"
+    )
+
+    print(
+        f"Excluded empty/noisy messages: "
+        f"{excluded_empty:,}"
+    )
+
+    print(
+        f"Final retrieval documents: "
         f"{len(documents):,}"
+    )
+
+    print(
+        f"Documents with weak intent: "
+        f"{labeled_documents:,}"
     )
 
     print(
@@ -325,13 +365,8 @@ def main() -> None:
     )
 
     print(
-        f"Golden leakage excluded: "
-        f"{metadata['golden_set_excluded']}"
-    )
-
-    print(
         f"\nIndex directory:\n"
-        f"{INDEX_DIR}"
+        f"{OUTPUT_DIR}"
     )
 
 

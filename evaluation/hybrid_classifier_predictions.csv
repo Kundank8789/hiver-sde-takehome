@@ -1,0 +1,201 @@
+interaction_id,gold_intent,predicted_intent,confidence,method,reason
+388905,IOS_UPDATE,IOS_UPDATE,0.7521240455887416,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+587082,BATTERY_POWER,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+659463,PERFORMANCE_STABILITY,IOS_UPDATE,0.7649830030708475,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+1745486,CONNECTIVITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1542729,APPS_MEDIA,CONNECTIVITY,0.82,rules,A high-information support signal identified the primary intent.
+1967960,DEVICE_HARDWARE,PERFORMANCE_STABILITY,0.9199999999999999,rules,High-precision support rules identified the primary intent.
+2286744,FEATURE_HOW_TO,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2595529,ACCOUNT_SECURITY,IOS_UPDATE,0.5917028863353017,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+1887005,PURCHASE_REPAIR_WARRANTY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2369471,OTHER_UNCLEAR,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1967747,IOS_UPDATE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2008084,BATTERY_POWER,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2152153,PERFORMANCE_STABILITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+321777,CONNECTIVITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+794627,APPS_MEDIA,BATTERY_POWER,0.82,rules,A high-information support signal identified the primary intent.
+2695019,DEVICE_HARDWARE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2040306,FEATURE_HOW_TO,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2005374,ACCOUNT_SECURITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1896412,PURCHASE_REPAIR_WARRANTY,BATTERY_POWER,0.82,rules,A high-information support signal identified the primary intent.
+2355025,OTHER_UNCLEAR,IOS_UPDATE,0.7629962042166291,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2456155,IOS_UPDATE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+208031,BATTERY_POWER,IOS_UPDATE,0.5703924095872723,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+244208,PERFORMANCE_STABILITY,CONNECTIVITY,0.82,rules,A high-information support signal identified the primary intent.
+1589956,CONNECTIVITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2445260,APPS_MEDIA,IOS_UPDATE,0.6437326252480385,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+209111,DEVICE_HARDWARE,PERFORMANCE_STABILITY,0.6722847971924171,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2435337,FEATURE_HOW_TO,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1220021,ACCOUNT_SECURITY,PERFORMANCE_STABILITY,0.5,fallback,No sufficiently reliable rule or historical match was available.
+2355853,PURCHASE_REPAIR_WARRANTY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2727815,OTHER_UNCLEAR,IOS_UPDATE,0.7659237001375434,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+1591486,IOS_UPDATE,CONNECTIVITY,0.7659597837690204,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+1762076,BATTERY_POWER,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2205779,PERFORMANCE_STABILITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2736432,CONNECTIVITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1973561,APPS_MEDIA,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1470794,DEVICE_HARDWARE,CONNECTIVITY,0.7172042241353654,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+1977679,FEATURE_HOW_TO,CONNECTIVITY,0.7554186361968138,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+112902,ACCOUNT_SECURITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1677876,PURCHASE_REPAIR_WARRANTY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+243287,OTHER_UNCLEAR,APPS_MEDIA,0.6235444114851614,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2077322,IOS_UPDATE,PERFORMANCE_STABILITY,0.5,fallback,No sufficiently reliable rule or historical match was available.
+1102914,BATTERY_POWER,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2255263,PERFORMANCE_STABILITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1386695,CONNECTIVITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1138326,APPS_MEDIA,BATTERY_POWER,0.82,rules,A high-information support signal identified the primary intent.
+1697477,DEVICE_HARDWARE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2293951,FEATURE_HOW_TO,IOS_UPDATE,0.7385480974898213,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+1983018,ACCOUNT_SECURITY,CONNECTIVITY,0.82,rules,A high-information support signal identified the primary intent.
+1995399,PURCHASE_REPAIR_WARRANTY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2639698,OTHER_UNCLEAR,PERFORMANCE_STABILITY,0.6979052491015417,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2858286,IOS_UPDATE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+326417,BATTERY_POWER,IOS_UPDATE,0.7122417027678862,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+303541,PERFORMANCE_STABILITY,PERFORMANCE_STABILITY,0.5,fallback,No sufficiently reliable rule or historical match was available.
+1470821,CONNECTIVITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1897912,APPS_MEDIA,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+666256,DEVICE_HARDWARE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2889481,FEATURE_HOW_TO,PURCHASE_REPAIR_WARRANTY,0.82,rules,A high-information support signal identified the primary intent.
+2923598,ACCOUNT_SECURITY,PERFORMANCE_STABILITY,0.9199999999999999,rules,High-precision support rules identified the primary intent.
+333657,PURCHASE_REPAIR_WARRANTY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+705439,OTHER_UNCLEAR,IOS_UPDATE,0.6418147616558412,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2172859,IOS_UPDATE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+855225,BATTERY_POWER,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1644556,PERFORMANCE_STABILITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1099654,CONNECTIVITY,APPS_MEDIA,0.5,fallback,No sufficiently reliable rule or historical match was available.
+457198,APPS_MEDIA,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+706147,DEVICE_HARDWARE,FEATURE_HOW_TO,0.7319674591575283,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2015463,FEATURE_HOW_TO,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2448382,ACCOUNT_SECURITY,PURCHASE_REPAIR_WARRANTY,0.82,rules,A high-information support signal identified the primary intent.
+2619893,PURCHASE_REPAIR_WARRANTY,PURCHASE_REPAIR_WARRANTY,0.82,rules,A high-information support signal identified the primary intent.
+1170181,OTHER_UNCLEAR,ACCOUNT_SECURITY,0.643291684592688,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+505074,IOS_UPDATE,APPS_MEDIA,0.5,fallback,No sufficiently reliable rule or historical match was available.
+2780705,BATTERY_POWER,APPS_MEDIA,0.85,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+654402,PERFORMANCE_STABILITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2296221,CONNECTIVITY,DEVICE_HARDWARE,0.85,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+1083946,APPS_MEDIA,APPS_MEDIA,0.5,fallback,No sufficiently reliable rule or historical match was available.
+1761087,DEVICE_HARDWARE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2008187,FEATURE_HOW_TO,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2950978,ACCOUNT_SECURITY,FEATURE_HOW_TO,0.82,rules,A high-information support signal identified the primary intent.
+310579,PURCHASE_REPAIR_WARRANTY,FEATURE_HOW_TO,0.6862826710573108,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2154617,OTHER_UNCLEAR,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+361055,IOS_UPDATE,IOS_UPDATE,0.7176943947918859,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+1167790,BATTERY_POWER,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1146013,PERFORMANCE_STABILITY,APPS_MEDIA,0.9199999999999999,rules,High-precision support rules identified the primary intent.
+975827,CONNECTIVITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2893321,APPS_MEDIA,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1374963,DEVICE_HARDWARE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2330957,FEATURE_HOW_TO,PERFORMANCE_STABILITY,0.5,fallback,No sufficiently reliable rule or historical match was available.
+1650095,ACCOUNT_SECURITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+323023,PURCHASE_REPAIR_WARRANTY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1981772,OTHER_UNCLEAR,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1862082,IOS_UPDATE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1767446,BATTERY_POWER,APPS_MEDIA,0.5953630054159714,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2969018,PERFORMANCE_STABILITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+188498,CONNECTIVITY,FEATURE_HOW_TO,0.6616962217818019,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+955696,APPS_MEDIA,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2814607,DEVICE_HARDWARE,PERFORMANCE_STABILITY,0.5,fallback,No sufficiently reliable rule or historical match was available.
+2295394,FEATURE_HOW_TO,PERFORMANCE_STABILITY,0.9199999999999999,rules,High-precision support rules identified the primary intent.
+2039774,ACCOUNT_SECURITY,PERFORMANCE_STABILITY,0.5904512411534447,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+1132179,PURCHASE_REPAIR_WARRANTY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+96895,OTHER_UNCLEAR,PURCHASE_REPAIR_WARRANTY,0.82,rules,A high-information support signal identified the primary intent.
+346279,IOS_UPDATE,PERFORMANCE_STABILITY,0.5,fallback,No sufficiently reliable rule or historical match was available.
+1023496,BATTERY_POWER,APPS_MEDIA,0.6426446729011936,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2527036,PERFORMANCE_STABILITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1002037,CONNECTIVITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1658668,APPS_MEDIA,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2833064,DEVICE_HARDWARE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2353622,FEATURE_HOW_TO,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2017215,ACCOUNT_SECURITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1683444,PURCHASE_REPAIR_WARRANTY,PURCHASE_REPAIR_WARRANTY,0.82,rules,A high-information support signal identified the primary intent.
+2295262,OTHER_UNCLEAR,BATTERY_POWER,0.5,fallback,No sufficiently reliable rule or historical match was available.
+2237154,IOS_UPDATE,PERFORMANCE_STABILITY,0.9199999999999999,rules,High-precision support rules identified the primary intent.
+1510876,BATTERY_POWER,FEATURE_HOW_TO,0.5590530635551326,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2048969,PERFORMANCE_STABILITY,IOS_UPDATE,0.85,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+151410,CONNECTIVITY,BATTERY_POWER,0.82,rules,A high-information support signal identified the primary intent.
+1806636,APPS_MEDIA,PERFORMANCE_STABILITY,0.5,fallback,No sufficiently reliable rule or historical match was available.
+2855326,DEVICE_HARDWARE,PERFORMANCE_STABILITY,0.5,fallback,No sufficiently reliable rule or historical match was available.
+2144064,FEATURE_HOW_TO,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+480561,ACCOUNT_SECURITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2543999,PURCHASE_REPAIR_WARRANTY,FEATURE_HOW_TO,0.8175688261979318,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+855442,OTHER_UNCLEAR,IOS_UPDATE,0.735020591598087,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2918858,IOS_UPDATE,ACCOUNT_SECURITY,0.6785280932842426,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+629787,BATTERY_POWER,IOS_UPDATE,0.6933423744653425,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+1955496,PERFORMANCE_STABILITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2534825,CONNECTIVITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2314355,APPS_MEDIA,APPS_MEDIA,0.5,fallback,No sufficiently reliable rule or historical match was available.
+146805,DEVICE_HARDWARE,FEATURE_HOW_TO,0.82,rules,A high-information support signal identified the primary intent.
+766956,FEATURE_HOW_TO,IOS_UPDATE,0.85,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+1376429,ACCOUNT_SECURITY,PURCHASE_REPAIR_WARRANTY,0.85,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+1007155,PURCHASE_REPAIR_WARRANTY,FEATURE_HOW_TO,0.77407939132767,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+1977154,OTHER_UNCLEAR,PERFORMANCE_STABILITY,0.9199999999999999,rules,High-precision support rules identified the primary intent.
+1231284,IOS_UPDATE,IOS_UPDATE,0.6487199134906412,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2422489,BATTERY_POWER,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1352911,PERFORMANCE_STABILITY,FEATURE_HOW_TO,0.82,rules,A high-information support signal identified the primary intent.
+2229339,CONNECTIVITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1215548,APPS_MEDIA,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1756351,DEVICE_HARDWARE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2689515,FEATURE_HOW_TO,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2037680,ACCOUNT_SECURITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+566752,PURCHASE_REPAIR_WARRANTY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1657259,OTHER_UNCLEAR,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2402270,IOS_UPDATE,IOS_UPDATE,0.7029865401247077,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2112851,BATTERY_POWER,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1413512,PERFORMANCE_STABILITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2280967,CONNECTIVITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2675064,APPS_MEDIA,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+451398,DEVICE_HARDWARE,APPS_MEDIA,0.9199999999999999,rules,High-precision support rules identified the primary intent.
+2740807,FEATURE_HOW_TO,APPS_MEDIA,0.5,fallback,No sufficiently reliable rule or historical match was available.
+1416041,ACCOUNT_SECURITY,PURCHASE_REPAIR_WARRANTY,0.82,rules,A high-information support signal identified the primary intent.
+2940386,PURCHASE_REPAIR_WARRANTY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+690733,OTHER_UNCLEAR,BATTERY_POWER,0.82,rules,A high-information support signal identified the primary intent.
+1709915,IOS_UPDATE,APPS_MEDIA,0.5,fallback,No sufficiently reliable rule or historical match was available.
+2199247,BATTERY_POWER,APPS_MEDIA,0.5,fallback,No sufficiently reliable rule or historical match was available.
+1886919,PERFORMANCE_STABILITY,PERFORMANCE_STABILITY,0.5,fallback,No sufficiently reliable rule or historical match was available.
+1805708,CONNECTIVITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+354061,APPS_MEDIA,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2679824,DEVICE_HARDWARE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1551810,FEATURE_HOW_TO,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1908126,ACCOUNT_SECURITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2455314,PURCHASE_REPAIR_WARRANTY,PERFORMANCE_STABILITY,0.5,fallback,No sufficiently reliable rule or historical match was available.
+2893385,OTHER_UNCLEAR,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+552079,IOS_UPDATE,FEATURE_HOW_TO,0.7336653440290253,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+816439,BATTERY_POWER,BATTERY_POWER,0.82,rules,A high-information support signal identified the primary intent.
+1746017,PERFORMANCE_STABILITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2004972,CONNECTIVITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2909289,APPS_MEDIA,APPS_MEDIA,0.5,fallback,No sufficiently reliable rule or historical match was available.
+1171399,DEVICE_HARDWARE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2015835,FEATURE_HOW_TO,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+311339,ACCOUNT_SECURITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+861454,PURCHASE_REPAIR_WARRANTY,FEATURE_HOW_TO,0.6806455045269433,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+740606,OTHER_UNCLEAR,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+620058,IOS_UPDATE,APPS_MEDIA,0.9199999999999999,rules,High-precision support rules identified the primary intent.
+2294886,BATTERY_POWER,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+107345,PERFORMANCE_STABILITY,PERFORMANCE_STABILITY,0.5,fallback,No sufficiently reliable rule or historical match was available.
+1143536,CONNECTIVITY,PERFORMANCE_STABILITY,0.9199999999999999,rules,High-precision support rules identified the primary intent.
+1167783,APPS_MEDIA,FEATURE_HOW_TO,0.82,rules,A high-information support signal identified the primary intent.
+2302710,DEVICE_HARDWARE,ACCOUNT_SECURITY,0.585881607213327,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+124438,FEATURE_HOW_TO,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1264626,ACCOUNT_SECURITY,PERFORMANCE_STABILITY,0.9199999999999999,rules,High-precision support rules identified the primary intent.
+2652492,PURCHASE_REPAIR_WARRANTY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1080759,OTHER_UNCLEAR,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1998838,IOS_UPDATE,PERFORMANCE_STABILITY,0.7744232385011882,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2869647,BATTERY_POWER,PERFORMANCE_STABILITY,0.5,fallback,No sufficiently reliable rule or historical match was available.
+2450946,PERFORMANCE_STABILITY,PERFORMANCE_STABILITY,0.5,fallback,No sufficiently reliable rule or historical match was available.
+648530,CONNECTIVITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1886654,APPS_MEDIA,PERFORMANCE_STABILITY,0.7974722699911143,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2349335,DEVICE_HARDWARE,BATTERY_POWER,0.82,rules,A high-information support signal identified the primary intent.
+148071,FEATURE_HOW_TO,ACCOUNT_SECURITY,0.9199999999999999,rules,High-precision support rules identified the primary intent.
+2889462,ACCOUNT_SECURITY,APPS_MEDIA,0.9199999999999999,rules,High-precision support rules identified the primary intent.
+1228744,PURCHASE_REPAIR_WARRANTY,FEATURE_HOW_TO,0.7296377970512311,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+122296,OTHER_UNCLEAR,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2922710,IOS_UPDATE,CONNECTIVITY,0.7719267708110266,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+177862,BATTERY_POWER,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+433137,PERFORMANCE_STABILITY,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2048961,CONNECTIVITY,PERFORMANCE_STABILITY,0.9199999999999999,rules,High-precision support rules identified the primary intent.
+36049,APPS_MEDIA,PERFORMANCE_STABILITY,0.6253182941463118,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+825934,DEVICE_HARDWARE,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+2905239,FEATURE_HOW_TO,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.
+1989299,ACCOUNT_SECURITY,PURCHASE_REPAIR_WARRANTY,0.8065775525651994,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+2367768,PURCHASE_REPAIR_WARRANTY,IOS_UPDATE,0.6059311434219035,historical_retrieval,Intent inferred from multiple historically similar AppleSupport cases.
+856654,OTHER_UNCLEAR,OTHER_UNCLEAR,0.0,fallback,No sufficiently reliable rule or historical match was available.

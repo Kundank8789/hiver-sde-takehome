@@ -79,3 +79,20 @@ enough to determine relevance by lexical similarity alone.
 **Next step:**
 Use semantic intent classification and retrieval-assisted response
 generation, while retaining lexical retrieval as a transparent baseline.
+
+## Decision 12 — Audit the golden set before model optimization
+
+**Decision:** Treat disagreements between the first LLM run and human labels
+as possible annotation errors, not automatically as model failures.
+
+**Evidence:**
+Several high-confidence disagreements showed apparent mismatches between
+the existing gold label and the customer's actual support request.
+
+**Action:**
+Run a dedicated golden-set quality audit and manually adjudicate suspicious
+examples before changing the classifier.
+
+**Reason:**
+Optimizing a model against noisy evaluation labels can produce misleading
+improvements and undermine trust in the headline metric.
