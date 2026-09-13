@@ -1,0 +1,28 @@
+{
+  "sample_size": 30,
+  "valid_judgments": 30,
+  "overall": {
+    "exact_agreement": 0.06666666666666667,
+    "within_one": 0.1,
+    "quadratic_weighted_kappa": -0.058446186742694195,
+    "spearman_correlation": -0.19889375900245074,
+    "spearman_p_value": 0.2920345008930345
+  },
+  "dimensions": {
+    "grounded": {
+      "exact_agreement": 0.1,
+      "within_one": 0.13333333333333333
+    },
+    "relevant": {
+      "exact_agreement": 0.03333333333333333,
+      "within_one": 0.13333333333333333
+    },
+    "helpful": {
+      "exact_agreement": 0.06666666666666667,
+      "within_one": 0.13333333333333333
+    }
+  },
+  "unsupported_claim_rate": 0.0,
+  "runtime_errors": 0,
+  "average_latency_seconds": 6.09218861333211
+}
